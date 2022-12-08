@@ -35,6 +35,8 @@ namespace BannerlordUnlocked {
             GetInboundDelegates(gameHost, ref NativeManager.InboundManifest);
         }
 
+        
+        // Todo: This currently only looks for single-param constructors, may need adopting for TW classes that don't follow this paradigm:
         public static T ConstrutFromNativePointer<T>(UIntPtr pointer) {
             var constructors = typeof(T).GetConstructors(BindingFlags.NonPublic | BindingFlags.Instance);
             foreach (var constructor in constructors) {
