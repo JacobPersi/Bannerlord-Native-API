@@ -1,6 +1,5 @@
-# Mount & Blade II: Bannerlord 
-## Manged/Native Interface
-This project is a hook into the managed/native interface for Mount & Blade II: Bannerlord, allowing you to interact with the game's internals.
+## M&B 2: Manged/Native Interface
+This project aims to intercept the Managed (C#) ↔ Native (C++) interface for Mount & Blade II: Bannerlord, allowing you to interact with the game's in ways outside of  the standard modding API.
 
 - See [Interfaces](Interfaces/Interfaces.md) for outbound calls from managed to native.
 - See [Events](Events/Events.md) for inbound calls from native to managed. 
