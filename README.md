@@ -1,5 +1,3 @@
----
-
 ## M&B 2: Manged/Native Interface
 This project aims to intercept the Managed (C#) ↔ Native (C++) interface for Mount & Blade II: Bannerlord, allowing you to interact with the game in ways outside the standard modding API.
 
