@@ -1,6 +1,10 @@
 # Mount & Blade II: Bannerlord Native Manager
 This project is a hook into the managed/native interface for Mount & Blade II: Bannerlord, allowing you to interact with the game's internals.
 
+<p align="center">
+  <img width="400" height="200" src="https://github.com/JacobPersi/Bannerlord-Natives/blob/main/img/demo.png?raw=true">
+</p>
+
 ## CodeGen.cs
 `CodeGen` generates wrapper code around the native interfaces to enhance the ease of modding. Code within `Events` & `Interfaces` is generated and thus can be largely ignored.
 
