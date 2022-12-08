@@ -1,14 +1,14 @@
 # Mount & Blade II: Bannerlord 
 ## Manged/Native Interface
-
 This project is a hook into the managed/native interface for Mount & Blade II: Bannerlord, allowing you to interact with the game's internals.
 
+- See [Interfaces](Interfaces/Interfaces.md) for outbound calls from managed to native.
+- See [Events](Events/Events.md) for inbound calls from native to managed. 
+- 
 <p align="center">
   <img width="400" height="200" src="https://github.com/JacobPersi/Bannerlord-Natives/blob/main/img/demo.png?raw=true">
 </p>
 
-See Interfaces.md for outbound calls from managed to native.
-See Events.md for inbound calls from native to managed. 
 
 ## NativeManager.cs
 `NativeManager` is a helper class for interacting with the native interface. In order for the generated APIs/Events to work, you need to run the `CollectReferences` method ahead of time. This collects the native references into dictionaries used by the generated code.  
