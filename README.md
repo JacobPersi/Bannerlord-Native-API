@@ -4,7 +4,7 @@ This project is a hook into the managed/native interface for Mount & Blade II: B
 
 - See [Interfaces](Interfaces/Interfaces.md) for outbound calls from managed to native.
 - See [Events](Events/Events.md) for inbound calls from native to managed. 
-- 
+
 <p align="center">
   <img width="400" height="200" src="https://github.com/JacobPersi/Bannerlord-Natives/blob/main/img/demo.png?raw=true">
 </p>
