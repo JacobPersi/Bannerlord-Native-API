@@ -20,7 +20,7 @@ namespace BannerlordUnlocked {
             }
         }
 
-        public static void CollectReferences(bool generateCode) {
+        public static void CollectReferences(bool generateCode = false) {
             CodeGen.GenerateCode = generateCode;
             object clrHost = GetNativeHost("TaleWorlds.DotNet", "Managed");
             CollectOutboundDelegates(clrHost, ref NativeManager.OutboundManifest);
