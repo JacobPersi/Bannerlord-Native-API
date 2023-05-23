@@ -8,8 +8,8 @@ namespace BannerlordUnlocked {
     public static class CodeGen {
 
         public static bool GenerateCode = false;
-        public static readonly string ScriptingInterfaceOutputDirectory = @"E:\Code\BannerlordUnlocked\Interfaces";
-        public static readonly string EventsfaceOutputDirectory = @"E:\Code\BannerlordUnlocked\Events";
+        public static readonly string ScriptingInterfaceOutputDirectory = @"C:\Users\Research\Bannerlord-Native-API\Interfaces";
+        public static readonly string EventsfaceOutputDirectory = @"C:\Users\Research\Bannerlord-Native-API\Events";
 
         public static string InterfaceName = string.Empty;
         public static string MethodBody = string.Empty;

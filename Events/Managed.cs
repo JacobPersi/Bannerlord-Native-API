@@ -225,6 +225,21 @@ namespace BannerlordUnlocked.Native.Events {
     }
     private static void ApplicationTickInternal( Single dt ) =>  Managed. _applicationTick?.Invoke( dt );
     
+    public delegate void ApplicationTickLightDelegate( Single dt );
+    private static ApplicationTickLightDelegate  _applicationTickLight;
+    public static event ApplicationTickLightDelegate ApplicationTickLight {
+        add {
+            MethodInfo callback = NativeManager.InboundManifest["Managed"]["ApplicationTickLight"].Method;
+            MethodInfo patch = typeof(Native.Events.Managed).GetMethod("ApplicationTickLight" + "Internal", BindingFlags.NonPublic | BindingFlags.Static);
+            NativeManager.Harmony.Patch(callback, prefix: new HarmonyMethod(patch));
+             _applicationTickLight += value;
+        }
+        remove {
+            NativeManager.UnHook("Managed", "ApplicationTickLight");
+        }
+    }
+    private static void ApplicationTickLightInternal( Single dt ) =>  Managed. _applicationTickLight?.Invoke( dt );
+    
     public delegate Boolean CheckClassNameIsValidDelegate( IntPtr className );
     private static CheckClassNameIsValidDelegate  _checkClassNameIsValid;
     public static event CheckClassNameIsValidDelegate CheckClassNameIsValid {

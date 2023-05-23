@@ -16,6 +16,11 @@ using static TaleWorlds.Core.ArmorComponent;
 namespace BannerlordUnlocked.Native {
     public static class IScene {
     
+    public static void SetHexagonVignetteColor( UIntPtr scenePointer ,   ref Vec3 p_hexagon_vignette_color ) {
+          NativeManager.OutboundManifest["IScene"]["SetHexagonVignetteColor"]
+        .DynamicInvoke(new object[] {  scenePointer ,  p_hexagon_vignette_color  } );
+    }
+
     public static void SetHexagonVignetteAlpha( UIntPtr scenePointer ,  Single Alpha ) {
           NativeManager.OutboundManifest["IScene"]["SetHexagonVignetteAlpha"]
         .DynamicInvoke(new object[] {  scenePointer ,  Alpha  } );
@@ -231,6 +236,11 @@ namespace BannerlordUnlocked.Native {
         .DynamicInvoke(new object[] {  scenePointer ,  faceGroupId ,  isLadder  } );
     }
 
+    public static Boolean BoxCast( UIntPtr scenePointer ,   ref Vec3 boxPointBegin ,   ref Vec3 boxPointEnd ,   ref Vec3 dir ,  Single distance ,   ref Single collisionDistance ,   ref Vec3 closestPoint ,   ref UIntPtr entityIndex ,  BodyFlags bodyExcludeFlags ) {
+         return   (Boolean)  NativeManager.OutboundManifest["IScene"]["BoxCast"]
+        .DynamicInvoke(new object[] {  scenePointer ,  boxPointBegin ,  boxPointEnd ,  dir ,  distance ,  collisionDistance ,  closestPoint ,  entityIndex ,  bodyExcludeFlags  } );
+    }
+
     public static void SetAbilityOfFacesWithId( UIntPtr scenePointer ,  Int32 faceGroupId ,  Boolean isEnabled ) {
           NativeManager.OutboundManifest["IScene"]["SetAbilityOfFacesWithId"]
         .DynamicInvoke(new object[] {  scenePointer ,  faceGroupId ,  isEnabled  } );
@@ -376,14 +386,14 @@ namespace BannerlordUnlocked.Native {
         .DynamicInvoke(new object[] {  scenePointer ,  name  } );
     }
 
-    public static void DeletePathWithName( UIntPtr scenePointer ,  Byte[] name ) {
-          NativeManager.OutboundManifest["IScene"]["DeletePathWithName"]
-        .DynamicInvoke(new object[] {  scenePointer ,  name  } );
-    }
-
     public static Int32 GetSoftBoundaryVertexCount( UIntPtr scenePointer ) {
          return   (Int32)  NativeManager.OutboundManifest["IScene"]["GetSoftBoundaryVertexCount"]
         .DynamicInvoke(new object[] {  scenePointer  } );
+    }
+
+    public static void DeletePathWithName( UIntPtr scenePointer ,  Byte[] name ) {
+          NativeManager.OutboundManifest["IScene"]["DeletePathWithName"]
+        .DynamicInvoke(new object[] {  scenePointer ,  name  } );
     }
 
     public static Int32 GetHardBoundaryVertexCount( UIntPtr scenePointer ) {
@@ -423,6 +433,11 @@ namespace BannerlordUnlocked.Native {
 
     public static Int32 GetName( UIntPtr scenePointer ) {
          return   (Int32)  NativeManager.OutboundManifest["IScene"]["GetName"]
+        .DynamicInvoke(new object[] {  scenePointer  } );
+    }
+
+    public static Int32 GetModulePath( UIntPtr scenePointer ) {
+         return   (Int32)  NativeManager.OutboundManifest["IScene"]["GetModulePath"]
         .DynamicInvoke(new object[] {  scenePointer  } );
     }
 
@@ -664,6 +679,11 @@ namespace BannerlordUnlocked.Native {
     public static Single GetWaterLevel( UIntPtr scene ) {
          return   (Single)  NativeManager.OutboundManifest["IScene"]["GetWaterLevel"]
         .DynamicInvoke(new object[] {  scene  } );
+    }
+
+    public static Single GetWaterLevelAtPosition( UIntPtr scene ,  Vec2 position ,  Boolean checkWaterBodyEntities ) {
+         return   (Single)  NativeManager.OutboundManifest["IScene"]["GetWaterLevelAtPosition"]
+        .DynamicInvoke(new object[] {  scene ,  position ,  checkWaterBodyEntities  } );
     }
 
     public static Int32 GetTerrainPhysicsMaterialIndexAtLayer( UIntPtr scene ,  Int32 layerIndex ) {
@@ -1164,11 +1184,6 @@ namespace BannerlordUnlocked.Native {
     public static void SetStreakTint( UIntPtr scenePointer ,   ref Vec3 p_streak_tint_color ) {
           NativeManager.OutboundManifest["IScene"]["SetStreakTint"]
         .DynamicInvoke(new object[] {  scenePointer ,  p_streak_tint_color  } );
-    }
-
-    public static void SetHexagonVignetteColor( UIntPtr scenePointer ,   ref Vec3 p_hexagon_vignette_color ) {
-          NativeManager.OutboundManifest["IScene"]["SetHexagonVignetteColor"]
-        .DynamicInvoke(new object[] {  scenePointer ,  p_hexagon_vignette_color  } );
     }
 
     }

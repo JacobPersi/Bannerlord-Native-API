@@ -206,6 +206,11 @@ namespace BannerlordUnlocked.Native {
         .DynamicInvoke(new object[] {  skeletonPointer ,  channelNo  } );
     }
 
+    public static void SetSkeletonAnimationSpeedAtChannel( UIntPtr skeletonPointer ,  Int32 channelNo ,  Single speed ) {
+          NativeManager.OutboundManifest["ISkeleton"]["SetSkeletonAnimationSpeedAtChannel"]
+        .DynamicInvoke(new object[] {  skeletonPointer ,  channelNo ,  speed  } );
+    }
+
     public static void SetSkeletonUptoDate( UIntPtr skeletonPointer ,  Boolean value ) {
           NativeManager.OutboundManifest["ISkeleton"]["SetSkeletonUptoDate"]
         .DynamicInvoke(new object[] {  skeletonPointer ,  value  } );

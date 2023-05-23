@@ -16,31 +16,6 @@ using static TaleWorlds.Core.ArmorComponent;
 namespace BannerlordUnlocked.Native {
     public static class IUtil {
     
-    public static UInt64 GetMainThreadId() {
-         return   (UInt64)  NativeManager.OutboundManifest["IUtil"]["GetMainThreadId"]
-        .DynamicInvoke(new object[] {  } );
-    }
-
-    public static UInt64 GetCurrentThreadId() {
-         return   (UInt64)  NativeManager.OutboundManifest["IUtil"]["GetCurrentThreadId"]
-        .DynamicInvoke(new object[] {  } );
-    }
-
-    public static void RegisterMeshForGPUMorph( Byte[] metaMeshName ) {
-          NativeManager.OutboundManifest["IUtil"]["RegisterMeshForGPUMorph"]
-        .DynamicInvoke(new object[] {  metaMeshName  } );
-    }
-
-    public static void ManagedParallelForWithDt( Int32 fromInclusive ,  Int32 toExclusive ,  Int64 curKey ,  Int32 grainSize ) {
-          NativeManager.OutboundManifest["IUtil"]["ManagedParallelForWithDt"]
-        .DynamicInvoke(new object[] {  fromInclusive ,  toExclusive ,  curKey ,  grainSize  } );
-    }
-
-    public static void ClearShaderMemory() {
-          NativeManager.OutboundManifest["IUtil"]["ClearShaderMemory"]
-        .DynamicInvoke(new object[] {  } );
-    }
-
     public static void OpenOnscreenKeyboard( Byte[] initialText ,  Byte[] descriptionText ,  Int32 maxLength ,  Int32 keyboardTypeEnum ) {
           NativeManager.OutboundManifest["IUtil"]["OpenOnscreenKeyboard"]
         .DynamicInvoke(new object[] {  initialText ,  descriptionText ,  maxLength ,  keyboardTypeEnum  } );
@@ -221,11 +196,6 @@ namespace BannerlordUnlocked.Native {
         .DynamicInvoke(new object[] {  value  } );
     }
 
-    public static void StartTelemetryConnection( Boolean showErrors ) {
-          NativeManager.OutboundManifest["IUtil"]["StartTelemetryConnection"]
-        .DynamicInvoke(new object[] {  showErrors  } );
-    }
-
     public static Boolean CheckShaderCompilation() {
          return   (Boolean)  NativeManager.OutboundManifest["IUtil"]["CheckShaderCompilation"]
         .DynamicInvoke(new object[] {  } );
@@ -274,26 +244,6 @@ namespace BannerlordUnlocked.Native {
     public static void SetRenderAgents( Boolean value ) {
           NativeManager.OutboundManifest["IUtil"]["SetRenderAgents"]
         .DynamicInvoke(new object[] {  value  } );
-    }
-
-    public static void StopTelemetryConnection() {
-          NativeManager.OutboundManifest["IUtil"]["StopTelemetryConnection"]
-        .DynamicInvoke(new object[] {  } );
-    }
-
-    public static void BeginTelemetryScope( TelemetryLevelMask levelMask ,  Byte[] scopeName ) {
-          NativeManager.OutboundManifest["IUtil"]["BeginTelemetryScope"]
-        .DynamicInvoke(new object[] {  levelMask ,  scopeName  } );
-    }
-
-    public static void EndTelemetryScope() {
-          NativeManager.OutboundManifest["IUtil"]["EndTelemetryScope"]
-        .DynamicInvoke(new object[] {  } );
-    }
-
-    public static Boolean HasTelemetryConnection() {
-         return   (Boolean)  NativeManager.OutboundManifest["IUtil"]["HasTelemetryConnection"]
-        .DynamicInvoke(new object[] {  } );
     }
 
     public static Int32 GetCoreGameState() {
@@ -704,6 +654,31 @@ namespace BannerlordUnlocked.Native {
     public static void ManagedParallelFor( Int32 fromInclusive ,  Int32 toExclusive ,  Int64 curKey ,  Int32 grainSize ) {
           NativeManager.OutboundManifest["IUtil"]["ManagedParallelFor"]
         .DynamicInvoke(new object[] {  fromInclusive ,  toExclusive ,  curKey ,  grainSize  } );
+    }
+
+    public static UInt64 GetMainThreadId() {
+         return   (UInt64)  NativeManager.OutboundManifest["IUtil"]["GetMainThreadId"]
+        .DynamicInvoke(new object[] {  } );
+    }
+
+    public static UInt64 GetCurrentThreadId() {
+         return   (UInt64)  NativeManager.OutboundManifest["IUtil"]["GetCurrentThreadId"]
+        .DynamicInvoke(new object[] {  } );
+    }
+
+    public static void RegisterMeshForGPUMorph( Byte[] metaMeshName ) {
+          NativeManager.OutboundManifest["IUtil"]["RegisterMeshForGPUMorph"]
+        .DynamicInvoke(new object[] {  metaMeshName  } );
+    }
+
+    public static void ManagedParallelForWithDt( Int32 fromInclusive ,  Int32 toExclusive ,  Int64 curKey ,  Int32 grainSize ) {
+          NativeManager.OutboundManifest["IUtil"]["ManagedParallelForWithDt"]
+        .DynamicInvoke(new object[] {  fromInclusive ,  toExclusive ,  curKey ,  grainSize  } );
+    }
+
+    public static void ClearShaderMemory() {
+          NativeManager.OutboundManifest["IUtil"]["ClearShaderMemory"]
+        .DynamicInvoke(new object[] {  } );
     }
 
     }

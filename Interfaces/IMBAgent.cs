@@ -16,11 +16,6 @@ using static TaleWorlds.Core.ArmorComponent;
 namespace BannerlordUnlocked.Native {
     public static class IMBAgent {
     
-    public static Int32 GetCurrentActionType( UIntPtr agentPointer ,  Int32 channelNo ) {
-         return   (Int32)  NativeManager.OutboundManifest["IMBAgent"]["GetCurrentActionType"]
-        .DynamicInvoke(new object[] {  agentPointer ,  channelNo  } );
-    }
-
     public static Int32 GetCurrentActionStage( UIntPtr agentPointer ,  Int32 channelNo ) {
          return   (Int32)  NativeManager.OutboundManifest["IMBAgent"]["GetCurrentActionStage"]
         .DynamicInvoke(new object[] {  agentPointer ,  channelNo  } );
@@ -786,9 +781,9 @@ namespace BannerlordUnlocked.Native {
         .DynamicInvoke(new object[] {  agentPointer  } );
     }
 
-    public static void SetInitialFrame( UIntPtr agentPointer ,   ref Vec3 initialPosition ,   ref Vec2 initialDirection ) {
+    public static void SetInitialFrame( UIntPtr agentPointer ,   ref Vec3 initialPosition ,   ref Vec2 initialDirection ,  Boolean canSpawnOutsideOfMissionBoundary ) {
           NativeManager.OutboundManifest["IMBAgent"]["SetInitialFrame"]
-        .DynamicInvoke(new object[] {  agentPointer ,  initialPosition ,  initialDirection  } );
+        .DynamicInvoke(new object[] {  agentPointer ,  initialPosition ,  initialDirection ,  canSpawnOutsideOfMissionBoundary  } );
     }
 
     public static void WeaponEquipped( UIntPtr agentPointer ,  Int32 equipmentSlot ,   ref WeaponDataAsNative weaponData ,  IntPtr weaponStatsData ,  Int32 weaponStatsDataLength ,   ref WeaponDataAsNative ammoWeaponData ,  IntPtr ammoWeaponStatsData ,  Int32 ammoWeaponStatsDataLength ,  UIntPtr weaponEntity ,  Boolean removeOldWeaponFromScene ,  Boolean isWieldedOnSpawn ) {
@@ -1001,14 +996,14 @@ namespace BannerlordUnlocked.Native {
         .DynamicInvoke(new object[] {  agentPointer ,  flags  } );
     }
 
-    public static Boolean SetScriptedPositionAndDirection( UIntPtr agentPointer ,   ref WorldPosition targetPosition ,  Single targetDirection ,  Boolean addHumanLikeDelay ,  Int32 additionalFlags ,  Byte[] debugString ) {
+    public static Boolean SetScriptedPositionAndDirection( UIntPtr agentPointer ,   ref WorldPosition targetPosition ,  Single targetDirection ,  Boolean addHumanLikeDelay ,  Int32 additionalFlags ) {
          return   (Boolean)  NativeManager.OutboundManifest["IMBAgent"]["SetScriptedPositionAndDirection"]
-        .DynamicInvoke(new object[] {  agentPointer ,  targetPosition ,  targetDirection ,  addHumanLikeDelay ,  additionalFlags ,  debugString  } );
+        .DynamicInvoke(new object[] {  agentPointer ,  targetPosition ,  targetDirection ,  addHumanLikeDelay ,  additionalFlags  } );
     }
 
-    public static Boolean SetScriptedPosition( UIntPtr agentPointer ,   ref WorldPosition targetPosition ,  Boolean addHumanLikeDelay ,  Int32 additionalFlags ,  Byte[] debugString ) {
+    public static Boolean SetScriptedPosition( UIntPtr agentPointer ,   ref WorldPosition targetPosition ,  Boolean addHumanLikeDelay ,  Int32 additionalFlags ) {
          return   (Boolean)  NativeManager.OutboundManifest["IMBAgent"]["SetScriptedPosition"]
-        .DynamicInvoke(new object[] {  agentPointer ,  targetPosition ,  addHumanLikeDelay ,  additionalFlags ,  debugString  } );
+        .DynamicInvoke(new object[] {  agentPointer ,  targetPosition ,  addHumanLikeDelay ,  additionalFlags  } );
     }
 
     public static void SetScriptedTargetEntity( UIntPtr agentPointer ,  UIntPtr entityId ,   ref WorldPosition specialPosition ,  Int32 additionalFlags ,  Boolean ignoreIfAlreadyAttacking ) {
@@ -1081,11 +1076,6 @@ namespace BannerlordUnlocked.Native {
         .DynamicInvoke(new object[] {  agentPointer  } );
     }
 
-    public static Boolean AllowFirstPersonWideRotation( UIntPtr agentPointer ) {
-         return   (Boolean)  NativeManager.OutboundManifest["IMBAgent"]["AllowFirstPersonWideRotation"]
-        .DynamicInvoke(new object[] {  agentPointer  } );
-    }
-
     public static UInt64 GetCurrentAnimationFlags( UIntPtr agentPointer ,  Int32 channelNo ) {
          return   (UInt64)  NativeManager.OutboundManifest["IMBAgent"]["GetCurrentAnimationFlags"]
         .DynamicInvoke(new object[] {  agentPointer ,  channelNo  } );
@@ -1093,6 +1083,11 @@ namespace BannerlordUnlocked.Native {
 
     public static Int32 GetCurrentAction( UIntPtr agentPointer ,  Int32 channelNo ) {
          return   (Int32)  NativeManager.OutboundManifest["IMBAgent"]["GetCurrentAction"]
+        .DynamicInvoke(new object[] {  agentPointer ,  channelNo  } );
+    }
+
+    public static Int32 GetCurrentActionType( UIntPtr agentPointer ,  Int32 channelNo ) {
+         return   (Int32)  NativeManager.OutboundManifest["IMBAgent"]["GetCurrentActionType"]
         .DynamicInvoke(new object[] {  agentPointer ,  channelNo  } );
     }
 

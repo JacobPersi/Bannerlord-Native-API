@@ -76,6 +76,16 @@ namespace BannerlordUnlocked.Native {
         .DynamicInvoke(new object[] {  eventFullName  } );
     }
 
+    public static void CreateVoiceEvent() {
+          NativeManager.OutboundManifest["ISoundManager"]["CreateVoiceEvent"]
+        .DynamicInvoke(new object[] {  } );
+    }
+
+    public static void DestroyVoiceEvent( Int32 id ) {
+          NativeManager.OutboundManifest["ISoundManager"]["DestroyVoiceEvent"]
+        .DynamicInvoke(new object[] {  id  } );
+    }
+
     public static void InitializeVoicePlayEvent() {
           NativeManager.OutboundManifest["ISoundManager"]["InitializeVoicePlayEvent"]
         .DynamicInvoke(new object[] {  } );

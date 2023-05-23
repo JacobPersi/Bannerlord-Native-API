@@ -41,9 +41,9 @@ namespace BannerlordUnlocked.Native {
         .DynamicInvoke(new object[] {  scenePointer ,  tod ,  season ,  cameraHeight  } );
     }
 
-    public static void TickStepSound( UIntPtr scenePointer ,  UIntPtr strategicEntityId ,  Int32 faceIndexterrainType ,  Int32 soundType ) {
+    public static void TickStepSound( UIntPtr scenePointer ,  UIntPtr visualsPointer ,  Int32 faceIndexterrainType ,  Int32 soundType ) {
           NativeManager.OutboundManifest["IMBMapScene"]["TickStepSound"]
-        .DynamicInvoke(new object[] {  scenePointer ,  strategicEntityId ,  faceIndexterrainType ,  soundType  } );
+        .DynamicInvoke(new object[] {  scenePointer ,  visualsPointer ,  faceIndexterrainType ,  soundType  } );
     }
 
     public static void TickAmbientSounds( UIntPtr scenePointer ,  Int32 terrainType ) {

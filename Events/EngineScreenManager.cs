@@ -105,7 +105,7 @@ namespace BannerlordUnlocked.Native.Events {
     }
     private static void OnGameWindowFocusChangeInternal( Boolean focusGained ) =>  EngineScreenManager. _onGameWindowFocusChange?.Invoke( focusGained );
     
-    public delegate void UpdateDelegate( NativeObjectPointer lastKeysPressed );
+    public delegate void UpdateDelegate();
     private static UpdateDelegate  _update;
     public static event UpdateDelegate Update {
         add {
@@ -118,7 +118,22 @@ namespace BannerlordUnlocked.Native.Events {
             NativeManager.UnHook("EngineScreenManager", "Update");
         }
     }
-    private static void UpdateInternal( NativeObjectPointer lastKeysPressed ) =>  EngineScreenManager. _update?.Invoke( lastKeysPressed );
+    private static void UpdateInternal() =>  EngineScreenManager. _update?.Invoke();
+    
+    public delegate void InitializeLastPressedKeysDelegate( NativeObjectPointer lastKeysPressed );
+    private static InitializeLastPressedKeysDelegate  _initializeLastPressedKeys;
+    public static event InitializeLastPressedKeysDelegate InitializeLastPressedKeys {
+        add {
+            MethodInfo callback = NativeManager.InboundManifest["EngineScreenManager"]["InitializeLastPressedKeys"].Method;
+            MethodInfo patch = typeof(Native.Events.EngineScreenManager).GetMethod("InitializeLastPressedKeys" + "Internal", BindingFlags.NonPublic | BindingFlags.Static);
+            NativeManager.Harmony.Patch(callback, prefix: new HarmonyMethod(patch));
+             _initializeLastPressedKeys += value;
+        }
+        remove {
+            NativeManager.UnHook("EngineScreenManager", "InitializeLastPressedKeys");
+        }
+    }
+    private static void InitializeLastPressedKeysInternal( NativeObjectPointer lastKeysPressed ) =>  EngineScreenManager. _initializeLastPressedKeys?.Invoke( lastKeysPressed );
     
     }
 }

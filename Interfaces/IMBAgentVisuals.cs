@@ -251,6 +251,11 @@ namespace BannerlordUnlocked.Native {
         .DynamicInvoke(new object[] {  agentVisualsPtr  } );
     }
 
+    public static Boolean IsValid( UIntPtr agentVisualsPtr ) {
+         return   (Boolean)  NativeManager.OutboundManifest["IMBAgentVisuals"]["IsValid"]
+        .DynamicInvoke(new object[] {  agentVisualsPtr  } );
+    }
+
     public static Vec3 GetGlobalStableEyePoint( UIntPtr agentVisualsPtr ,  Boolean isHumanoid ) {
          return   (Vec3)  NativeManager.OutboundManifest["IMBAgentVisuals"]["GetGlobalStableEyePoint"]
         .DynamicInvoke(new object[] {  agentVisualsPtr ,  isHumanoid  } );
@@ -259,6 +264,16 @@ namespace BannerlordUnlocked.Native {
     public static Vec3 GetGlobalStableNeckPoint( UIntPtr agentVisualsPtr ,  Boolean isHumanoid ) {
          return   (Vec3)  NativeManager.OutboundManifest["IMBAgentVisuals"]["GetGlobalStableNeckPoint"]
         .DynamicInvoke(new object[] {  agentVisualsPtr ,  isHumanoid  } );
+    }
+
+    public static void GetBoneEntitialFrame( UIntPtr agentVisualsPtr ,  SByte bone ,  Boolean useBoneMapping ,   ref MatrixFrame outFrame ) {
+          NativeManager.OutboundManifest["IMBAgentVisuals"]["GetBoneEntitialFrame"]
+        .DynamicInvoke(new object[] {  agentVisualsPtr ,  bone ,  useBoneMapping ,  outFrame  } );
+    }
+
+    public static RagdollState GetCurrentRagdollState( UIntPtr agentVisualsPtr ) {
+         return   (RagdollState)  NativeManager.OutboundManifest["IMBAgentVisuals"]["GetCurrentRagdollState"]
+        .DynamicInvoke(new object[] {  agentVisualsPtr  } );
     }
 
     public static SByte GetRealBoneIndex( UIntPtr agentVisualsPtr ,  HumanBone boneType ) {

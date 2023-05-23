@@ -86,6 +86,11 @@ namespace BannerlordUnlocked.Native {
         .DynamicInvoke(new object[] {  meshPointer  } );
     }
 
+    public static NativeObjectPointer GetSecondMaterial( UIntPtr meshPointer ) {
+         return   (NativeObjectPointer)  NativeManager.OutboundManifest["IMesh"]["GetSecondMaterial"]
+        .DynamicInvoke(new object[] {  meshPointer  } );
+    }
+
     public static void ReleaseResources( UIntPtr meshPointer ) {
           NativeManager.OutboundManifest["IMesh"]["ReleaseResources"]
         .DynamicInvoke(new object[] {  meshPointer  } );

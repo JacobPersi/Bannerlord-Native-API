@@ -296,9 +296,9 @@ namespace BannerlordUnlocked.Native {
         .DynamicInvoke(new object[] {  gameEntitiesTemp  } );
     }
 
-    public static void GetMultiMesh( Byte[] name ,  IntPtr gameEntity ) {
-          NativeManager.OutboundManifest["IMetaMesh"]["GetMultiMesh"]
-        .DynamicInvoke(new object[] {  name ,  gameEntity  } );
+    public static NativeObjectPointer GetMultiMesh( Byte[] name ) {
+         return   (NativeObjectPointer)  NativeManager.OutboundManifest["IMetaMesh"]["GetMultiMesh"]
+        .DynamicInvoke(new object[] {  name  } );
     }
 
     public static void PreloadForRendering( UIntPtr multiMeshPointer ) {

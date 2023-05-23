@@ -171,6 +171,11 @@ namespace BannerlordUnlocked.Native {
         .DynamicInvoke(new object[] {  missionPointer ,  isPrediction ,  shooterAgentIndex ,  weaponData ,  weaponStatsData ,  weaponStatsDataLength ,  damageBonus ,  position ,  direction ,  orientation ,  baseSpeed ,  speed ,  addRigidBody ,  entityPointer ,  forcedMissileIndex ,  isPrimaryWeaponShot ,  missileEntity  } );
     }
 
+    public static Int32 AddMissileSingleUsage( UIntPtr missionPointer ,  Boolean isPrediction ,  Int32 shooterAgentIndex ,   ref WeaponDataAsNative weaponData ,   ref WeaponStatsData weaponStatsData ,  Single damageBonus ,   ref Vec3 position ,   ref Vec3 direction ,   ref Mat3 orientation ,  Single baseSpeed ,  Single speed ,  Boolean addRigidBody ,  UIntPtr entityPointer ,  Int32 forcedMissileIndex ,  Boolean isPrimaryWeaponShot ,   ref UIntPtr missileEntity ) {
+         return   (Int32)  NativeManager.OutboundManifest["IMBMission"]["AddMissileSingleUsage"]
+        .DynamicInvoke(new object[] {  missionPointer ,  isPrediction ,  shooterAgentIndex ,  weaponData ,  weaponStatsData ,  damageBonus ,  position ,  direction ,  orientation ,  baseSpeed ,  speed ,  addRigidBody ,  entityPointer ,  forcedMissileIndex ,  isPrimaryWeaponShot ,  missileEntity  } );
+    }
+
     public static Vec3 GetMissileCollisionPoint( UIntPtr missionPointer ,  Vec3 missileStartingPosition ,  Vec3 missileDirection ,  Single missileStartingSpeed ,   ref WeaponDataAsNative weaponData ) {
          return   (Vec3)  NativeManager.OutboundManifest["IMBMission"]["GetMissileCollisionPoint"]
         .DynamicInvoke(new object[] {  missionPointer ,  missileStartingPosition ,  missileDirection ,  missileStartingSpeed ,  weaponData  } );
@@ -426,9 +431,9 @@ namespace BannerlordUnlocked.Native {
         .DynamicInvoke(new object[] {  missionPointer ,  enemyPosition ,  defendingPosition ,  sampleSize ,  distanceRatioAllowedFromDefendedPos ,  distanceSqrdAllowedFromBoundary ,  cosinusOfBestSlope ,  cosinusOfMaxAcceptedSlope ,  minSlopeScore ,  maxSlopeScore ,  excessiveSlopePenalty ,  nearConeCenterRatio ,  nearConeCenterBonus ,  heightDifferenceCeiling ,  maxDisplacementPenalty  } );
     }
 
-    public static void GetNearbyAgentsAux( UIntPtr missionPointer ,  Vec2 center ,  Single radius ,  Int32 teamIndex ,  Int32 friendOrEnemyOrAll ,  Int32 agentsArrayOffset ,  IntPtr agentIds ,  Int32 agentsArraySize ,   ref Int32 retrievedAgentCount ) {
+    public static void GetNearbyAgentsAux( UIntPtr missionPointer ,  Vec2 center ,  Single radius ,  Int32 teamIndex ,  Int32 friendOrEnemyOrAll ,  Int32 agentsArrayOffset ,   ref StackArray40Int agentIds ,   ref Int32 retrievedAgentCount ) {
           NativeManager.OutboundManifest["IMBMission"]["GetNearbyAgentsAux"]
-        .DynamicInvoke(new object[] {  missionPointer ,  center ,  radius ,  teamIndex ,  friendOrEnemyOrAll ,  agentsArrayOffset ,  agentIds ,  agentsArraySize ,  retrievedAgentCount  } );
+        .DynamicInvoke(new object[] {  missionPointer ,  center ,  radius ,  teamIndex ,  friendOrEnemyOrAll ,  agentsArrayOffset ,  agentIds ,  retrievedAgentCount  } );
     }
 
     public static Vec2 GetWeightedPointOfEnemies( UIntPtr missionPointer ,  Int32 agentIndex ,  Vec2 basePoint ) {
@@ -529,6 +534,11 @@ namespace BannerlordUnlocked.Native {
     public static Boolean ToggleDisableFallAvoid() {
          return   (Boolean)  NativeManager.OutboundManifest["IMBMission"]["ToggleDisableFallAvoid"]
         .DynamicInvoke(new object[] {  } );
+    }
+
+    public static Single GetWaterLevelAtPosition( UIntPtr missionPointer ,  Vec2 position ) {
+         return   (Single)  NativeManager.OutboundManifest["IMBMission"]["GetWaterLevelAtPosition"]
+        .DynamicInvoke(new object[] {  missionPointer ,  position  } );
     }
 
     }

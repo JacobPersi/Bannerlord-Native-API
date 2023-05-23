@@ -16,6 +16,21 @@ using static TaleWorlds.Core.ArmorComponent;
 namespace BannerlordUnlocked.Native {
     public static class IGameEntity {
     
+    public static void SetFactor2Color( UIntPtr entityId ,  UInt32 factor2Color ) {
+          NativeManager.OutboundManifest["IGameEntity"]["SetFactor2Color"]
+        .DynamicInvoke(new object[] {  entityId ,  factor2Color  } );
+    }
+
+    public static void SetFactorColor( UIntPtr entityId ,  UInt32 factorColor ) {
+          NativeManager.OutboundManifest["IGameEntity"]["SetFactorColor"]
+        .DynamicInvoke(new object[] {  entityId ,  factorColor  } );
+    }
+
+    public static UInt32 GetFactorColor( UIntPtr entityId ) {
+         return   (UInt32)  NativeManager.OutboundManifest["IGameEntity"]["GetFactorColor"]
+        .DynamicInvoke(new object[] {  entityId  } );
+    }
+
     public static void SetAnimationSoundActivation( UIntPtr entityId ,  Boolean activate ) {
           NativeManager.OutboundManifest["IGameEntity"]["SetAnimationSoundActivation"]
         .DynamicInvoke(new object[] {  entityId ,  activate  } );
@@ -79,6 +94,41 @@ namespace BannerlordUnlocked.Native {
     public static void SetAnimTreeChannelParameter( UIntPtr entityId ,  Single phase ,  Int32 channel_no ) {
           NativeManager.OutboundManifest["IGameEntity"]["SetAnimTreeChannelParameter"]
         .DynamicInvoke(new object[] {  entityId ,  phase ,  channel_no  } );
+    }
+
+    public static void AddMeshToBone( UIntPtr entityId ,  UIntPtr multiMeshPointer ,  SByte boneIndex ) {
+          NativeManager.OutboundManifest["IGameEntity"]["AddMeshToBone"]
+        .DynamicInvoke(new object[] {  entityId ,  multiMeshPointer ,  boneIndex  } );
+    }
+
+    public static void ActivateRagdoll( UIntPtr entityId ) {
+          NativeManager.OutboundManifest["IGameEntity"]["ActivateRagdoll"]
+        .DynamicInvoke(new object[] {  entityId  } );
+    }
+
+    public static void Freeze( UIntPtr entityId ,  Boolean isFrozen ) {
+          NativeManager.OutboundManifest["IGameEntity"]["Freeze"]
+        .DynamicInvoke(new object[] {  entityId ,  isFrozen  } );
+    }
+
+    public static Boolean IsFrozen( UIntPtr entityId ) {
+         return   (Boolean)  NativeManager.OutboundManifest["IGameEntity"]["IsFrozen"]
+        .DynamicInvoke(new object[] {  entityId  } );
+    }
+
+    public static SByte GetBoneCount( UIntPtr entityId ) {
+         return   (SByte)  NativeManager.OutboundManifest["IGameEntity"]["GetBoneCount"]
+        .DynamicInvoke(new object[] {  entityId  } );
+    }
+
+    public static void GetBoneEntitialFrameWithIndex( UIntPtr entityId ,  SByte boneIndex ,   ref MatrixFrame outEntitialFrame ) {
+          NativeManager.OutboundManifest["IGameEntity"]["GetBoneEntitialFrameWithIndex"]
+        .DynamicInvoke(new object[] {  entityId ,  boneIndex ,  outEntitialFrame  } );
+    }
+
+    public static void GetBoneEntitialFrameWithName( UIntPtr entityId ,  Byte[] boneName ,   ref MatrixFrame outEntitialFrame ) {
+          NativeManager.OutboundManifest["IGameEntity"]["GetBoneEntitialFrameWithName"]
+        .DynamicInvoke(new object[] {  entityId ,  boneName ,  outEntitialFrame  } );
     }
 
     public static void DisableContour( UIntPtr entityId ) {
@@ -226,8 +276,18 @@ namespace BannerlordUnlocked.Native {
         .DynamicInvoke(new object[] {  entityPtr ,  cullMode  } );
     }
 
+    public static Vec3 GetLinearVelocity( UIntPtr entityPtr ) {
+         return   (Vec3)  NativeManager.OutboundManifest["IGameEntity"]["GetLinearVelocity"]
+        .DynamicInvoke(new object[] {  entityPtr  } );
+    }
+
     public static NativeObjectPointer GetScene( UIntPtr entityId ) {
          return   (NativeObjectPointer)  NativeManager.OutboundManifest["IGameEntity"]["GetScene"]
+        .DynamicInvoke(new object[] {  entityId  } );
+    }
+
+    public static UIntPtr GetScenePointer( UIntPtr entityId ) {
+         return   (UIntPtr)  NativeManager.OutboundManifest["IGameEntity"]["GetScenePointer"]
         .DynamicInvoke(new object[] {  entityId  } );
     }
 
@@ -424,6 +484,11 @@ namespace BannerlordUnlocked.Native {
     public static void SetGlobalFrame( UIntPtr entityId ,   ref MatrixFrame frame ) {
           NativeManager.OutboundManifest["IGameEntity"]["SetGlobalFrame"]
         .DynamicInvoke(new object[] {  entityId ,  frame  } );
+    }
+
+    public static void GetPreviousGlobalFrame( UIntPtr entityPtr ,   ref MatrixFrame frame ) {
+          NativeManager.OutboundManifest["IGameEntity"]["GetPreviousGlobalFrame"]
+        .DynamicInvoke(new object[] {  entityPtr ,  frame  } );
     }
 
     public static Boolean HasPhysicsBody( UIntPtr entityId ) {
@@ -666,6 +731,11 @@ namespace BannerlordUnlocked.Native {
         .DynamicInvoke(new object[] {  entityId ,  scName  } );
     }
 
+    public static Boolean HasScene( UIntPtr entityId ) {
+         return   (Boolean)  NativeManager.OutboundManifest["IGameEntity"]["HasScene"]
+        .DynamicInvoke(new object[] {  entityId  } );
+    }
+
     public static Int32 GetName( UIntPtr entityId ) {
          return   (Int32)  NativeManager.OutboundManifest["IGameEntity"]["GetName"]
         .DynamicInvoke(new object[] {  entityId  } );
@@ -849,21 +919,6 @@ namespace BannerlordUnlocked.Native {
     public static void SetVectorArgument( UIntPtr entityId ,  Single vectorArgument0 ,  Single vectorArgument1 ,  Single vectorArgument2 ,  Single vectorArgument3 ) {
           NativeManager.OutboundManifest["IGameEntity"]["SetVectorArgument"]
         .DynamicInvoke(new object[] {  entityId ,  vectorArgument0 ,  vectorArgument1 ,  vectorArgument2 ,  vectorArgument3  } );
-    }
-
-    public static void SetFactor2Color( UIntPtr entityId ,  UInt32 factor2Color ) {
-          NativeManager.OutboundManifest["IGameEntity"]["SetFactor2Color"]
-        .DynamicInvoke(new object[] {  entityId ,  factor2Color  } );
-    }
-
-    public static void SetFactorColor( UIntPtr entityId ,  UInt32 factorColor ) {
-          NativeManager.OutboundManifest["IGameEntity"]["SetFactorColor"]
-        .DynamicInvoke(new object[] {  entityId ,  factorColor  } );
-    }
-
-    public static UInt32 GetFactorColor( UIntPtr entityId ) {
-         return   (UInt32)  NativeManager.OutboundManifest["IGameEntity"]["GetFactorColor"]
-        .DynamicInvoke(new object[] {  entityId  } );
     }
 
     }

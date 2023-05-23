@@ -156,5 +156,10 @@ namespace BannerlordUnlocked.Native {
         .DynamicInvoke(new object[] {  ptr  } );
     }
 
+    public static Boolean RayCastForClosestEntityOrTerrain( UIntPtr ptr ,   ref Vec3 sourcePoint ,   ref Vec3 targetPoint ,  Single rayThickness ,   ref Single collisionDistance ,   ref Vec3 closestPoint ,   ref UIntPtr entityIndex ,  BodyFlags bodyExcludeFlags ) {
+         return   (Boolean)  NativeManager.OutboundManifest["ISceneView"]["RayCastForClosestEntityOrTerrain"]
+        .DynamicInvoke(new object[] {  ptr ,  sourcePoint ,  targetPoint ,  rayThickness ,  collisionDistance ,  closestPoint ,  entityIndex ,  bodyExcludeFlags  } );
+    }
+
     }
 }

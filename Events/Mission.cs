@@ -15,6 +15,51 @@ using static TaleWorlds.MountAndBlade.Mission;
 namespace BannerlordUnlocked.Native.Events {
     public static class Mission {
     
+    public delegate void ChargeDamageCallbackDelegate( Int32 thisPointer ,   ref AttackCollisionData collisionData ,  Blow blow ,  Int32 attacker ,  Int32 victim );
+    private static ChargeDamageCallbackDelegate  _chargeDamageCallback;
+    public static event ChargeDamageCallbackDelegate ChargeDamageCallback {
+        add {
+            MethodInfo callback = NativeManager.InboundManifest["Mission"]["ChargeDamageCallback"].Method;
+            MethodInfo patch = typeof(Native.Events.Mission).GetMethod("ChargeDamageCallback" + "Internal", BindingFlags.NonPublic | BindingFlags.Static);
+            NativeManager.Harmony.Patch(callback, prefix: new HarmonyMethod(patch));
+             _chargeDamageCallback += value;
+        }
+        remove {
+            NativeManager.UnHook("Mission", "ChargeDamageCallback");
+        }
+    }
+    private static void ChargeDamageCallbackInternal( Int32 thisPointer ,   ref AttackCollisionData collisionData ,  Blow blow ,  Int32 attacker ,  Int32 victim ) =>  Mission. _chargeDamageCallback?.Invoke( thisPointer ,  ref collisionData ,  blow ,  attacker ,  victim );
+    
+    public delegate void FallDamageCallbackDelegate( Int32 thisPointer ,   ref AttackCollisionData collisionData ,  Blow b ,  Int32 attacker ,  Int32 victim );
+    private static FallDamageCallbackDelegate  _fallDamageCallback;
+    public static event FallDamageCallbackDelegate FallDamageCallback {
+        add {
+            MethodInfo callback = NativeManager.InboundManifest["Mission"]["FallDamageCallback"].Method;
+            MethodInfo patch = typeof(Native.Events.Mission).GetMethod("FallDamageCallback" + "Internal", BindingFlags.NonPublic | BindingFlags.Static);
+            NativeManager.Harmony.Patch(callback, prefix: new HarmonyMethod(patch));
+             _fallDamageCallback += value;
+        }
+        remove {
+            NativeManager.UnHook("Mission", "FallDamageCallback");
+        }
+    }
+    private static void FallDamageCallbackInternal( Int32 thisPointer ,   ref AttackCollisionData collisionData ,  Blow b ,  Int32 attacker ,  Int32 victim ) =>  Mission. _fallDamageCallback?.Invoke( thisPointer ,  ref collisionData ,  b ,  attacker ,  victim );
+    
+    public delegate void GetDefendCollisionResultsDelegate( Int32 thisPointer ,  Int32 attackerAgent ,  Int32 defenderAgent ,  CombatCollisionResult collisionResult ,  Int32 attackerWeaponSlotIndex ,  Boolean isAlternativeAttack ,  StrikeType strikeType ,  UsageDirection attackDirection ,  Single collisionDistanceOnWeapon ,  Single attackProgress ,  Boolean attackIsParried ,  Boolean isPassiveUsageHit ,  Boolean isHeavyAttack ,   ref Single defenderStunPeriod ,   ref Single attackerStunPeriod ,   ref Boolean crushedThrough );
+    private static GetDefendCollisionResultsDelegate  _getDefendCollisionResults;
+    public static event GetDefendCollisionResultsDelegate GetDefendCollisionResults {
+        add {
+            MethodInfo callback = NativeManager.InboundManifest["Mission"]["GetDefendCollisionResults"].Method;
+            MethodInfo patch = typeof(Native.Events.Mission).GetMethod("GetDefendCollisionResults" + "Internal", BindingFlags.NonPublic | BindingFlags.Static);
+            NativeManager.Harmony.Patch(callback, prefix: new HarmonyMethod(patch));
+             _getDefendCollisionResults += value;
+        }
+        remove {
+            NativeManager.UnHook("Mission", "GetDefendCollisionResults");
+        }
+    }
+    private static void GetDefendCollisionResultsInternal( Int32 thisPointer ,  Int32 attackerAgent ,  Int32 defenderAgent ,  CombatCollisionResult collisionResult ,  Int32 attackerWeaponSlotIndex ,  Boolean isAlternativeAttack ,  StrikeType strikeType ,  UsageDirection attackDirection ,  Single collisionDistanceOnWeapon ,  Single attackProgress ,  Boolean attackIsParried ,  Boolean isPassiveUsageHit ,  Boolean isHeavyAttack ,   ref Single defenderStunPeriod ,   ref Single attackerStunPeriod ,   ref Boolean crushedThrough ) =>  Mission. _getDefendCollisionResults?.Invoke( thisPointer ,  attackerAgent ,  defenderAgent ,  collisionResult ,  attackerWeaponSlotIndex ,  isAlternativeAttack ,  strikeType ,  attackDirection ,  collisionDistanceOnWeapon ,  attackProgress ,  attackIsParried ,  isPassiveUsageHit ,  isHeavyAttack ,  ref defenderStunPeriod ,  ref attackerStunPeriod ,  ref crushedThrough );
+    
     public delegate void DebugLogNativeMissionNetworkEventDelegate( Int32 eventEnum ,  IntPtr eventName ,  Int32 bitCount );
     private static DebugLogNativeMissionNetworkEventDelegate  _debugLogNativeMissionNetworkEvent;
     public static event DebugLogNativeMissionNetworkEventDelegate DebugLogNativeMissionNetworkEvent {
@@ -44,6 +89,36 @@ namespace BannerlordUnlocked.Native.Events {
         }
     }
     private static void PauseMissionInternal( Int32 thisPointer ) =>  Mission. _pauseMission?.Invoke( thisPointer );
+    
+    public delegate void OnAgentAddedAsCorpseDelegate( Int32 thisPointer ,  Int32 affectedAgent );
+    private static OnAgentAddedAsCorpseDelegate  _onAgentAddedAsCorpse;
+    public static event OnAgentAddedAsCorpseDelegate OnAgentAddedAsCorpse {
+        add {
+            MethodInfo callback = NativeManager.InboundManifest["Mission"]["OnAgentAddedAsCorpse"].Method;
+            MethodInfo patch = typeof(Native.Events.Mission).GetMethod("OnAgentAddedAsCorpse" + "Internal", BindingFlags.NonPublic | BindingFlags.Static);
+            NativeManager.Harmony.Patch(callback, prefix: new HarmonyMethod(patch));
+             _onAgentAddedAsCorpse += value;
+        }
+        remove {
+            NativeManager.UnHook("Mission", "OnAgentAddedAsCorpse");
+        }
+    }
+    private static void OnAgentAddedAsCorpseInternal( Int32 thisPointer ,  Int32 affectedAgent ) =>  Mission. _onAgentAddedAsCorpse?.Invoke( thisPointer ,  affectedAgent );
+    
+    public delegate void OnAgentDeletedDelegate( Int32 thisPointer ,  Int32 affectedAgent );
+    private static OnAgentDeletedDelegate  _onAgentDeleted;
+    public static event OnAgentDeletedDelegate OnAgentDeleted {
+        add {
+            MethodInfo callback = NativeManager.InboundManifest["Mission"]["OnAgentDeleted"].Method;
+            MethodInfo patch = typeof(Native.Events.Mission).GetMethod("OnAgentDeleted" + "Internal", BindingFlags.NonPublic | BindingFlags.Static);
+            NativeManager.Harmony.Patch(callback, prefix: new HarmonyMethod(patch));
+             _onAgentDeleted += value;
+        }
+        remove {
+            NativeManager.UnHook("Mission", "OnAgentDeleted");
+        }
+    }
+    private static void OnAgentDeletedInternal( Int32 thisPointer ,  Int32 affectedAgent ) =>  Mission. _onAgentDeleted?.Invoke( thisPointer ,  affectedAgent );
     
     public delegate void OnAgentRemovedDelegate( Int32 thisPointer ,  Int32 affectedAgent ,  Int32 affectorAgent ,  AgentState agentState ,  KillingBlow killingBlow );
     private static OnAgentRemovedDelegate  _onAgentRemoved;
@@ -225,80 +300,20 @@ namespace BannerlordUnlocked.Native.Events {
     }
     private static Boolean MissileHitCallbackInternal( Int32 thisPointer ,   ref Int32 extraHitParticleIndex ,   ref AttackCollisionData collisionData ,  Vec3 missileStartingPosition ,  Vec3 missilePosition ,  Vec3 missileAngularVelocity ,  Vec3 movementVelocity ,  MatrixFrame attachGlobalFrame ,  MatrixFrame affectedShieldGlobalFrame ,  Int32 numDamagedAgents ,  Int32 attacker ,  Int32 victim ,  NativeObjectPointer hitEntity ) =>  (Boolean)  Mission. _missileHitCallback?.Invoke( thisPointer ,  ref extraHitParticleIndex ,  ref collisionData ,  missileStartingPosition ,  missilePosition ,  missileAngularVelocity ,  movementVelocity ,  attachGlobalFrame ,  affectedShieldGlobalFrame ,  numDamagedAgents ,  attacker ,  victim ,  hitEntity );
     
-    public delegate void ChargeDamageCallbackDelegate( Int32 thisPointer ,   ref AttackCollisionData collisionData ,  Blow blow ,  Int32 attacker ,  Int32 victim );
-    private static ChargeDamageCallbackDelegate  _chargeDamageCallback;
-    public static event ChargeDamageCallbackDelegate ChargeDamageCallback {
+    public delegate void MissileCalculatePassbySoundParametersCallbackMTDelegate( Int32 thisPointer ,  Int32 missileIndex ,   ref SoundEventParameter soundEventParameter );
+    private static MissileCalculatePassbySoundParametersCallbackMTDelegate  _missileCalculatePassbySoundParametersCallbackMT;
+    public static event MissileCalculatePassbySoundParametersCallbackMTDelegate MissileCalculatePassbySoundParametersCallbackMT {
         add {
-            MethodInfo callback = NativeManager.InboundManifest["Mission"]["ChargeDamageCallback"].Method;
-            MethodInfo patch = typeof(Native.Events.Mission).GetMethod("ChargeDamageCallback" + "Internal", BindingFlags.NonPublic | BindingFlags.Static);
+            MethodInfo callback = NativeManager.InboundManifest["Mission"]["MissileCalculatePassbySoundParametersCallbackMT"].Method;
+            MethodInfo patch = typeof(Native.Events.Mission).GetMethod("MissileCalculatePassbySoundParametersCallbackMT" + "Internal", BindingFlags.NonPublic | BindingFlags.Static);
             NativeManager.Harmony.Patch(callback, prefix: new HarmonyMethod(patch));
-             _chargeDamageCallback += value;
+             _missileCalculatePassbySoundParametersCallbackMT += value;
         }
         remove {
-            NativeManager.UnHook("Mission", "ChargeDamageCallback");
+            NativeManager.UnHook("Mission", "MissileCalculatePassbySoundParametersCallbackMT");
         }
     }
-    private static void ChargeDamageCallbackInternal( Int32 thisPointer ,   ref AttackCollisionData collisionData ,  Blow blow ,  Int32 attacker ,  Int32 victim ) =>  Mission. _chargeDamageCallback?.Invoke( thisPointer ,  ref collisionData ,  blow ,  attacker ,  victim );
-    
-    public delegate void FallDamageCallbackDelegate( Int32 thisPointer ,   ref AttackCollisionData collisionData ,  Blow b ,  Int32 attacker ,  Int32 victim );
-    private static FallDamageCallbackDelegate  _fallDamageCallback;
-    public static event FallDamageCallbackDelegate FallDamageCallback {
-        add {
-            MethodInfo callback = NativeManager.InboundManifest["Mission"]["FallDamageCallback"].Method;
-            MethodInfo patch = typeof(Native.Events.Mission).GetMethod("FallDamageCallback" + "Internal", BindingFlags.NonPublic | BindingFlags.Static);
-            NativeManager.Harmony.Patch(callback, prefix: new HarmonyMethod(patch));
-             _fallDamageCallback += value;
-        }
-        remove {
-            NativeManager.UnHook("Mission", "FallDamageCallback");
-        }
-    }
-    private static void FallDamageCallbackInternal( Int32 thisPointer ,   ref AttackCollisionData collisionData ,  Blow b ,  Int32 attacker ,  Int32 victim ) =>  Mission. _fallDamageCallback?.Invoke( thisPointer ,  ref collisionData ,  b ,  attacker ,  victim );
-    
-    public delegate void GetDefendCollisionResultsDelegate( Int32 thisPointer ,  Int32 attackerAgent ,  Int32 defenderAgent ,  CombatCollisionResult collisionResult ,  Int32 attackerWeaponSlotIndex ,  Boolean isAlternativeAttack ,  StrikeType strikeType ,  UsageDirection attackDirection ,  Single collisionDistanceOnWeapon ,  Single attackProgress ,  Boolean attackIsParried ,  Boolean isPassiveUsageHit ,  Boolean isHeavyAttack ,   ref Single defenderStunPeriod ,   ref Single attackerStunPeriod ,   ref Boolean crushedThrough );
-    private static GetDefendCollisionResultsDelegate  _getDefendCollisionResults;
-    public static event GetDefendCollisionResultsDelegate GetDefendCollisionResults {
-        add {
-            MethodInfo callback = NativeManager.InboundManifest["Mission"]["GetDefendCollisionResults"].Method;
-            MethodInfo patch = typeof(Native.Events.Mission).GetMethod("GetDefendCollisionResults" + "Internal", BindingFlags.NonPublic | BindingFlags.Static);
-            NativeManager.Harmony.Patch(callback, prefix: new HarmonyMethod(patch));
-             _getDefendCollisionResults += value;
-        }
-        remove {
-            NativeManager.UnHook("Mission", "GetDefendCollisionResults");
-        }
-    }
-    private static void GetDefendCollisionResultsInternal( Int32 thisPointer ,  Int32 attackerAgent ,  Int32 defenderAgent ,  CombatCollisionResult collisionResult ,  Int32 attackerWeaponSlotIndex ,  Boolean isAlternativeAttack ,  StrikeType strikeType ,  UsageDirection attackDirection ,  Single collisionDistanceOnWeapon ,  Single attackProgress ,  Boolean attackIsParried ,  Boolean isPassiveUsageHit ,  Boolean isHeavyAttack ,   ref Single defenderStunPeriod ,   ref Single attackerStunPeriod ,   ref Boolean crushedThrough ) =>  Mission. _getDefendCollisionResults?.Invoke( thisPointer ,  attackerAgent ,  defenderAgent ,  collisionResult ,  attackerWeaponSlotIndex ,  isAlternativeAttack ,  strikeType ,  attackDirection ,  collisionDistanceOnWeapon ,  attackProgress ,  attackIsParried ,  isPassiveUsageHit ,  isHeavyAttack ,  ref defenderStunPeriod ,  ref attackerStunPeriod ,  ref crushedThrough );
-    
-    public delegate void OnAgentAddedAsCorpseDelegate( Int32 thisPointer ,  Int32 affectedAgent );
-    private static OnAgentAddedAsCorpseDelegate  _onAgentAddedAsCorpse;
-    public static event OnAgentAddedAsCorpseDelegate OnAgentAddedAsCorpse {
-        add {
-            MethodInfo callback = NativeManager.InboundManifest["Mission"]["OnAgentAddedAsCorpse"].Method;
-            MethodInfo patch = typeof(Native.Events.Mission).GetMethod("OnAgentAddedAsCorpse" + "Internal", BindingFlags.NonPublic | BindingFlags.Static);
-            NativeManager.Harmony.Patch(callback, prefix: new HarmonyMethod(patch));
-             _onAgentAddedAsCorpse += value;
-        }
-        remove {
-            NativeManager.UnHook("Mission", "OnAgentAddedAsCorpse");
-        }
-    }
-    private static void OnAgentAddedAsCorpseInternal( Int32 thisPointer ,  Int32 affectedAgent ) =>  Mission. _onAgentAddedAsCorpse?.Invoke( thisPointer ,  affectedAgent );
-    
-    public delegate void OnAgentDeletedDelegate( Int32 thisPointer ,  Int32 affectedAgent );
-    private static OnAgentDeletedDelegate  _onAgentDeleted;
-    public static event OnAgentDeletedDelegate OnAgentDeleted {
-        add {
-            MethodInfo callback = NativeManager.InboundManifest["Mission"]["OnAgentDeleted"].Method;
-            MethodInfo patch = typeof(Native.Events.Mission).GetMethod("OnAgentDeleted" + "Internal", BindingFlags.NonPublic | BindingFlags.Static);
-            NativeManager.Harmony.Patch(callback, prefix: new HarmonyMethod(patch));
-             _onAgentDeleted += value;
-        }
-        remove {
-            NativeManager.UnHook("Mission", "OnAgentDeleted");
-        }
-    }
-    private static void OnAgentDeletedInternal( Int32 thisPointer ,  Int32 affectedAgent ) =>  Mission. _onAgentDeleted?.Invoke( thisPointer ,  affectedAgent );
+    private static void MissileCalculatePassbySoundParametersCallbackMTInternal( Int32 thisPointer ,  Int32 missileIndex ,   ref SoundEventParameter soundEventParameter ) =>  Mission. _missileCalculatePassbySoundParametersCallbackMT?.Invoke( thisPointer ,  missileIndex ,  ref soundEventParameter );
     
     public delegate void UpdateMissionTimeCacheDelegate( Int32 thisPointer ,  Single curTime );
     private static UpdateMissionTimeCacheDelegate  _updateMissionTimeCache;

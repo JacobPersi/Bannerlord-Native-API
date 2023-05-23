@@ -21,5 +21,30 @@ namespace BannerlordUnlocked.Native {
         .DynamicInvoke(new object[] {  } );
     }
 
+    public static void StartTelemetryConnection( Boolean showErrors ) {
+          NativeManager.OutboundManifest["ITelemetry"]["StartTelemetryConnection"]
+        .DynamicInvoke(new object[] {  showErrors  } );
+    }
+
+    public static void StopTelemetryConnection() {
+          NativeManager.OutboundManifest["ITelemetry"]["StopTelemetryConnection"]
+        .DynamicInvoke(new object[] {  } );
+    }
+
+    public static void BeginTelemetryScope( TelemetryLevelMask levelMask ,  Byte[] scopeName ) {
+          NativeManager.OutboundManifest["ITelemetry"]["BeginTelemetryScope"]
+        .DynamicInvoke(new object[] {  levelMask ,  scopeName  } );
+    }
+
+    public static void EndTelemetryScope() {
+          NativeManager.OutboundManifest["ITelemetry"]["EndTelemetryScope"]
+        .DynamicInvoke(new object[] {  } );
+    }
+
+    public static Boolean HasTelemetryConnection() {
+         return   (Boolean)  NativeManager.OutboundManifest["ITelemetry"]["HasTelemetryConnection"]
+        .DynamicInvoke(new object[] {  } );
+    }
+
     }
 }
