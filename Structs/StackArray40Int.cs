@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BannerlordUnlocked.Structs {
+namespace BannerlordUnlocked {
     public struct StackArray40Int {
         public int this[int index] {
             get {
